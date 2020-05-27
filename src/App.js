@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BookList from './components/booklist.component';
+import SearchBook from './components/searchbook.component';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -15,6 +16,8 @@ function App() {
   }, []); //RUNNING ONE TIME ONLY
 
   useEffect(() => {
+    console.log(search);
+
     setFilteredBooks(
       books.filter((book) => {
         return book.name.toLowerCase().includes(search.toLowerCase());
@@ -22,18 +25,15 @@ function App() {
     );
   }, [search, books]);
 
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <div className="container">
       <div className="row">
         <br />
-
         <BookList books={filteredBooks} />
-        <input
-          className="form-control"
-          type="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <SearchBook search={search} handleSearchChange={handleSearchChange} />
       </div>
     </div>
   );
