@@ -1,12 +1,12 @@
 import React from 'react';
 
-const SearchBook = ({ search, handleSearchChange }) => {
+const SearchBook = ({ search, setSearch }) => {
   return (
     <input
       className="form-control"
       type="search"
       placeholder={search}
-      onChange={handleSearchChange}
+      onChange={(e) => setSearch(e.target.value)}
     />
   );
 };

@@ -25,15 +25,12 @@ function App() {
     );
   }, [search, books]);
 
-  const handleSearchChange = (e) => {
-    setSearch(e.target.value);
-  };
   return (
     <div className="container">
       <div className="row">
         <br />
         <BookList books={filteredBooks} />
-        <SearchBook search={search} handleSearchChange={handleSearchChange} />
+        <SearchBook search={search} setSearch={setSearch} />
       </div>
     </div>
   );
